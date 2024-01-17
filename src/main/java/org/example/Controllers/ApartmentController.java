@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/apartaments")
+@RequestMapping("/apartments")
 public class ApartmentController {
 
     @Autowired
