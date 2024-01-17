@@ -1,10 +1,7 @@
 package org.example.Controllers;
 
-import java.io.IOException;
 import java.util.List;
 
-import javafx.fxml.FXML;
-import org.example.App;
 import org.example.Models.Apartment;
 import org.example.service.ApartmentService;
 import org.springframework.beans.factory.annotation.Autowired;

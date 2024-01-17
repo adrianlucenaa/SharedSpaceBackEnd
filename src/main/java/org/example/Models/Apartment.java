@@ -10,13 +10,13 @@ public class Apartment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "address", length=256, nullable = false)
     private String address;
 
     @Column(name = "numberowner", nullable = false)
-    private int numberowner;
+    private Integer numberowner;
 
     @Column(name = "owneremail", length=256, nullable = false)
     private String owneremail;

@@ -30,7 +30,7 @@ public class ApartmentService {
 
     public Apartment createOrUpdateApartment(Apartment apartment) {
         Apartment result;
-        if (apartment.getId() != 0) { //update
+        if (apartment.getId() != 0) {
             Optional<Apartment> resultOptional = apartmentRepository.findById(apartment.getId());
             if (resultOptional.isPresent()) {
                 Apartment fromDB = resultOptional.get();
