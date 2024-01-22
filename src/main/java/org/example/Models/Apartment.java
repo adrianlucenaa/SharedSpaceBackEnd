@@ -21,6 +21,9 @@ public class Apartment {
     @Column(name = "owneremail", length=256, nullable = false)
     private String owneremail;
 
+    @Column(name = "nameowner", length=256, nullable = false)
+    private String nameowner;
+
     public Apartment() {
     }
 
@@ -29,13 +32,14 @@ public class Apartment {
         this.address = address;
         this.numberowner = numberowner;
         this.owneremail = owneremail;
+        this.nameowner = nameowner;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -47,11 +51,11 @@ public class Apartment {
         this.address = address;
     }
 
-    public int getNumberowner() {
+    public Integer getNumberowner() {
         return numberowner;
     }
 
-    public void setNumberowner(int numberowner) {
+    public void setNumberowner(Integer numberowner) {
         this.numberowner = numberowner;
     }
 
@@ -63,6 +67,14 @@ public class Apartment {
         this.owneremail = owneremail;
     }
 
+    public String getNameowner() {
+        return nameowner;
+    }
+
+    public void setNameowner(String nameowner) {
+        this.nameowner = nameowner;
+    }
+
     @Override
     public String toString() {
         return "Apartment{" +
@@ -70,7 +82,7 @@ public class Apartment {
                 ", address='" + address + '\'' +
                 ", numberowner=" + numberowner +
                 ", owneremail='" + owneremail + '\'' +
+                ", nameowner='" + nameowner + '\'' +
                 '}';
     }
-
 }

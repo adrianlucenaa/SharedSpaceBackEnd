@@ -37,6 +37,7 @@ public class ApartmentService {
                 fromDB.setAddress(apartment.getAddress());
                 fromDB.setNumberowner(apartment.getNumberowner());
                 fromDB.setOwneremail(apartment.getOwneremail());
+                fromDB.setNameowner(apartment.getNameowner());
                 result = apartmentRepository.save(fromDB);
             } else {
                 throw new RecordNotFoundException("No apartment found with id: " + apartment.getId());

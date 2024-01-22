@@ -3,25 +3,25 @@ package org.example.Models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "name",length=256 ,nullable = false)
+    @Column(name = "name", length = 256, nullable = false)
     private String name;
 
-    @Column(name = "surname",length=256 ,nullable = false)
+    @Column(name = "surname", length = 256, nullable = false)
     private String surname;
 
-    @Column(name = "email",length=256 ,nullable = false)
+    @Column(name = "email", length = 256, nullable = false)
     private String email;
 
-    @Column(name = "password",length=256 ,nullable = false)
+    @Column(name = "password", length = 256, nullable = false)
     private String password;
 
-    @Column(name = "dni",length=256 ,nullable = false)
+    @Column(name = "dni", length = 256, nullable = false)
     private String dni;
 
 
@@ -37,11 +37,11 @@ public class User {
         this.dni = dni;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-        public void setId(Integer id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -93,8 +93,7 @@ public class User {
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", dni=" + dni +
+                ", dni='" + dni + '\'' +
                 '}';
     }
 }
-
