@@ -1,5 +1,6 @@
 package org.example.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
@@ -25,16 +26,22 @@ public class User {
     private String dni;
 
 
+
+    @ManyToOne(optional = true,fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+    @JoinColumn(name = "id_apartment")
+    private Apartment apartment;
+
     public User() {
     }
 
-    public User(Integer id, String name, String surname, String email, String password, String dni) {
+    public User(Integer id, String name, String surname, String email, String password, String dni, Apartment apartment) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.password = password;
         this.dni = dni;
+        this.apartment = apartment;
     }
 
     public Integer getId() {
@@ -85,6 +92,14 @@ public class User {
         this.dni = dni;
     }
 
+    public Apartment getApartment() {
+        return apartment;
+    }
+
+    public void setApartment(Apartment apartment) {
+        this.apartment = apartment;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -94,6 +109,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", dni='" + dni + '\'' +
+                ", apartment=" + apartment +
                 '}';
     }
 }

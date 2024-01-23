@@ -28,7 +28,7 @@ public class UserService {
     }
     public User createOrUpdateUser(User user) {
         User end;
-        if(user.getId() != -1){ //update
+        if(user.getId() >0){ //update
             Optional<User> result = repo.findById(user.getId());
             if(result.isPresent()){
                 User fromDB = result.get();
