@@ -1,17 +1,32 @@
 package org.example.Models;
 
+@Entity
+@Table(name = "tasks")
 public class Task {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+
+    @Column(name = "name", length = 256, nullable = false)
     private String name;
+
+    @Column(name = "description", length = 256, nullable = false)
     private String description;
+
+    @Column(name = "completed", nullable = false)
     private boolean completed;
+
+    @ManyToOne(optional = true,fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
     private Apartment apartment;
+
+    @ManyToOne(optional = true,fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
     private User user;
 
     public Task() {
     }
-    
+
 
 
 
