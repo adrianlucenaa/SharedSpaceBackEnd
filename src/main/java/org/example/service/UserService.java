@@ -14,10 +14,12 @@ public class UserService {
     @Autowired
     UserRepository repo;
 
+    //Logica para devolver todos los usuarios
     public List<User> getAllUsers() {
         List<User> users =  repo.findAll();
         return users;
     }
+    //Logica para buscar un usuario por id
     public User getUserById(int id) {
         Optional<User> user = repo.findById(id);
         if(user.isPresent()){
@@ -26,6 +28,7 @@ public class UserService {
             throw new RecordNotFoundException("No user found with id: " + id);
         }
     }
+    //Logica para crear o actualizar un usuario
     public User createOrUpdateUser(User user) {
         User end;
         if(user.getId() >0){ //update
@@ -47,6 +50,7 @@ public class UserService {
         return end;
     }
 
+    //Logica para borrar un usuario
     public void deleteUser(int id) {
         Optional<User> result = repo.findById(id);
         if(result.isPresent()){
@@ -56,4 +60,23 @@ public class UserService {
         }
     }
 
+    //Devuelve todos los usuarios de un apartamento por id
+    public List<User> getUsersByApartmentId(int id){
+        return repo.getUsersByApartmentId(id);
+    }
+
+    //Devuelve todos los usuarios con tareas sin completar
+    public List<User> getUsersByTaskId(int id){
+        return repo.getUsersByTaskId(id);
+    }
+
+    //Devuelve todos los usuarios por nombre
+    public List<User> getUsersByName(String name){
+        return repo.getUsersByName(name);
+    }
+
+    //Devuelve los usuarios por nombre de apartamento
+    public List<User> getUsersByApartmentName(String name){
+        return repo.getUsersByApartmentName(name);
+    }
 }
