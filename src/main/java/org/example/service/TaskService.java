@@ -63,4 +63,15 @@ public class TaskService {
    public List<Task> getTasksByApartmentIdAndUserId(int id1, int id2){
        return taskRepository.getTasksByApartmentIdAndUserId(id1, id2);
    }
+
+   //Crea una tarea por usuario
+   public Task createTaskByUser(Task task, User user){
+       task.setUser(user);
+       return taskRepository.save(task);
+   }
+   //Crea una tarea por apartamento
+   public Task createTaskByApartment(Task task, Apartment apartment){
+       task.setApartment(apartment);
+       return taskRepository.save(task);
+   }
 }

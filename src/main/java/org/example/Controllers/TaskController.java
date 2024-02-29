@@ -54,4 +54,18 @@ public class TaskController {
         List<Task> tasks = service.getTasksByApartmentIdAndUserId(id, id2);
         return ResponseEntity.ok(tasks);
     }
+
+    //Crea una tarea por usuario
+    @PostMapping("/user/{id}")
+    public ResponseEntity<Task> createTaskByUser(@PathVariable("id") int id, @RequestBody Task task){
+        Task end = service.createTaskByUser(id, task);
+        return ResponseEntity.ok(end);
+    }
+
+    //Crea una tarea por apartamento
+    @PostMapping("/apartment/{id}")
+    public ResponseEntity<Task> createTaskByApartment(@PathVariable("id") int id, @RequestBody Task task){
+        Task end = service.createTaskByApartment(id, task);
+        return ResponseEntity.ok(end);
+    }
 }
