@@ -14,6 +14,8 @@ public class ApartmentController {
 
     @Autowired
     ApartmentService service;
+
+    //Devuelve todos los apartamentos
     @GetMapping
     public ResponseEntity<List<Apartment>> getAllApartment(){
         List<Apartment> apartments = service.getAllApartments();
@@ -21,21 +23,45 @@ public class ApartmentController {
         //return new ResponseEntity<List<User>>(users, new HttpHeaders(), HttpStatus.OK);
     }
 
+    //Devuelve todos los apartamentos por id
     @GetMapping("/{id}")
     public ResponseEntity<Apartment> getUserById(@PathVariable("id") int id){
         Apartment apartment = service.getApartmentById(id);
         return ResponseEntity.ok(apartment);
     }
 
+    //Crea o actualiza un apartamento
     @PostMapping
     public ResponseEntity<Apartment> createOrUpdateApartment(@RequestBody Apartment apartment){
         Apartment end = service.createOrUpdateApartment(apartment);
         return ResponseEntity.ok(end);
     }
 
+    //Elimina un apartamento
     @DeleteMapping("/{id}")
     public void deleteApartment(@PathVariable("id") int id){
         service.deleteApartment(id);
+    }
+
+    //Devuelve todos los apartamentos de un usuario
+    @GetMapping("/user/{id}")
+    public ResponseEntity<List<Apartment>> getApartmentsByUserId(@PathVariable("id") int id){
+        List<Apartment> apartments = service.getApartmentsByUserId(id);
+        return ResponseEntity.ok(apartments);
+    }
+
+    //Devuelve todos los apartamentos por nombre
+    @GetMapping("/name/{name}")
+    public ResponseEntity<List<Apartment>> getApartmentsByName(@PathVariable("name") String name){
+        List<Apartment> apartments = service.getApartmentsByName(name);
+        return ResponseEntity.ok(apartments);
+    }
+
+    //Devuelve todos los apartamentos con tarea pendiente
+    @GetMapping("/pending")
+    public ResponseEntity<List<Apartment>> getPendingApartments(){
+        List<Apartment> apartments = service.getPendingApartments();
+        return ResponseEntity.ok(apartments);
     }
 
 }

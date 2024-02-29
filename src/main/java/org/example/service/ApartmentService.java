@@ -15,10 +15,12 @@ public class ApartmentService {
     @Autowired
     private ApartmentRepository apartmentRepository;
 
+    //Logica devueve todas las apartamentos
     public List<Apartment> getAllApartments() {
         return apartmentRepository.findAll();
     }
 
+    //Logica para buscar un apartamento por id
     public Apartment getApartmentById(int id) {
         Optional<Apartment> apartment = apartmentRepository.findById(id);
         if (apartment.isPresent()) {
@@ -27,7 +29,7 @@ public class ApartmentService {
             throw new RecordNotFoundException("No apartment found with id: " + id);
         }
     }
-
+    //Logica para crear o actualizar un apartamento
     public Apartment createOrUpdateApartment(Apartment apartment) {
         Apartment result;
         if (apartment.getId() != 0) {
@@ -48,6 +50,7 @@ public class ApartmentService {
         return result;
     }
 
+    //Logica para borrar un apartamento
     public void deleteApartment(int id) {
         Optional<Apartment> resultOptional = apartmentRepository.findById(id);
         if (resultOptional.isPresent()) {
@@ -55,5 +58,20 @@ public class ApartmentService {
         } else {
             throw new RecordNotFoundException("No apartment found with id: " + id);
         }
+    }
+
+    //Devuelve todos los apartamentos de un usuario
+    public List<Apartment> getApartmentsByUserId(int id){
+        return apartmentRepository.getApartmentsByUserId(id);
+    }
+
+    //Devuelve todos los apartamentos por nombre
+    public List<Apartment> getApartmentsByName(String name){
+        return apartmentRepository.getApartmentsByName(name);
+    }
+
+    //Devuelve los apartamentos con tareas pendientes
+    public List<Apartment> getApartmentsWithPendingTasks(){
+        return apartmentRepository.getApartmentsWithPendingTasks();
     }
 }
