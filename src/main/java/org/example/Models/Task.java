@@ -1,9 +1,14 @@
 package org.example.Models;
 
+
+import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+
 @Entity
 @Table(name = "tasks")
 public class Task {
 
+    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -87,8 +92,8 @@ public class Task {
         this.user = user;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "Task{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
@@ -98,4 +103,17 @@ public class Task {
                 ", user=" + user +
                 '}';
     }
+
+    public Task(String name, String description, boolean completed, Apartment apartment, User user) {
+        this.name = name;
+        this.description = description;
+        this.completed = completed;
+        this.apartment = apartment;
+        this.user = user;
+    }
+
+
+
+
+
 }

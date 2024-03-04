@@ -60,7 +60,7 @@ public class ApartmentService {
         }
     }
 
-    //Devuelve todos los apartamentos de un usuario
+    //Logica para devolver todos los apartamentos de un usuario
     public List<Apartment> getApartmentsByUserId(int id){
         return apartmentRepository.getApartmentsByUserId(id);
     }
@@ -70,8 +70,16 @@ public class ApartmentService {
         return apartmentRepository.getApartmentsByName(name);
     }
 
-    //Devuelve los apartamentos con tareas pendientes
-    public List<Apartment> getApartmentsWithPendingTasks(){
-        return apartmentRepository.getApartmentsWithPendingTasks();
+
+
+    //Devuelve todos los apartamentos de una tarea
+    public List<Apartment> getApartmentsByTask(int id){
+        return apartmentRepository.getApartmentsByTask(id);
+
+    }
+
+    //Devuelve todos los apartamentos con tareas sin completar
+    public List<Apartment> getApartmentsUncompleted() {
+        return apartmentRepository.getApartmentsUncompleted();
     }
 }

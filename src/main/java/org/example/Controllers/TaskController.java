@@ -1,5 +1,13 @@
 package org.example.Controllers;
 
+import org.example.Models.Task;
+import org.example.service.TaskService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
@@ -55,17 +63,4 @@ public class TaskController {
         return ResponseEntity.ok(tasks);
     }
 
-    //Crea una tarea por usuario
-    @PostMapping("/user/{id}")
-    public ResponseEntity<Task> createTaskByUser(@PathVariable("id") int id, @RequestBody Task task){
-        Task end = service.createTaskByUser(id, task);
-        return ResponseEntity.ok(end);
-    }
-
-    //Crea una tarea por apartamento
-    @PostMapping("/apartment/{id}")
-    public ResponseEntity<Task> createTaskByApartment(@PathVariable("id") int id, @RequestBody Task task){
-        Task end = service.createTaskByApartment(id, task);
-        return ResponseEntity.ok(end);
-    }
 }

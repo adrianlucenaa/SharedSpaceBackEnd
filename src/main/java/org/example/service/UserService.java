@@ -65,10 +65,7 @@ public class UserService {
         return repo.getUsersByApartmentId(id);
     }
 
-    //Devuelve todos los usuarios con tareas sin completar
-    public List<User> getUsersByTaskId(int id){
-        return repo.getUsersByTaskId(id);
-    }
+
 
     //Devuelve todos los usuarios por nombre
     public List<User> getUsersByName(String name){
@@ -78,5 +75,9 @@ public class UserService {
     //Devuelve los usuarios por nombre de apartamento
     public List<User> getUsersByApartmentName(String name){
         return repo.getUsersByApartmentName(name);
+    }
+
+    public List<User> getUsersTaskUncompleted() {
+        return repo.getUsersTaskUncompleted();
     }
 }

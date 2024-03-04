@@ -55,10 +55,10 @@ public class UserController {
         return ResponseEntity.ok(users);
     }
 
-    //Devuelve los usuarioas que tengan asignadas tareas sin completar
+    //Devuelve los usuarios que tengan asignadas tareas sin completar
     @GetMapping("/user/task/uncompleted")
-    public ResponseEntity<List<User>> getUsersUncompleted(){
-        List<User> users = service.getUsersUncompleted();
+    public ResponseEntity<List<User>> getUsersTaskUncompleted(){
+        List<User> users = service.getUsersTaskUncompleted();
         return ResponseEntity.ok(users);
     }
 

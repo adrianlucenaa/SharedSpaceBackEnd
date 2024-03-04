@@ -43,24 +43,24 @@ public class ApartmentController {
         service.deleteApartment(id);
     }
 
-    //Devuelve todos los apartamentos de un usuario
-    @GetMapping("/user/{id}")
+    //Devuelve todos los apartamentos de un usuario por id
+    @GetMapping("/apartment/user/{id}")
     public ResponseEntity<List<Apartment>> getApartmentsByUserId(@PathVariable("id") int id){
         List<Apartment> apartments = service.getApartmentsByUserId(id);
         return ResponseEntity.ok(apartments);
     }
 
-    //Devuelve todos los apartamentos por nombre
-    @GetMapping("/name/{name}")
+    //Devuelve todos los apartamentos por nombre de apartamento
+    @GetMapping("/apartment/name/{name}")
     public ResponseEntity<List<Apartment>> getApartmentsByName(@PathVariable("name") String name){
         List<Apartment> apartments = service.getApartmentsByName(name);
         return ResponseEntity.ok(apartments);
     }
 
-    //Devuelve todos los apartamentos con tarea pendiente
-    @GetMapping("/pending")
-    public ResponseEntity<List<Apartment>> getPendingApartments(){
-        List<Apartment> apartments = service.getPendingApartments();
+    //Devuelve todos los apartamentos con tareas sin completar
+    @GetMapping("/apartment/task/uncompleted")
+    public ResponseEntity<List<Apartment>> getApartmentsUncompleted(){
+        List<Apartment> apartments = service.getApartmentsUncompleted();
         return ResponseEntity.ok(apartments);
     }
 
