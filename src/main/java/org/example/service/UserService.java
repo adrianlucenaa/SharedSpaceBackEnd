@@ -15,9 +15,8 @@ public class UserService {
     UserRepository repo;
 
     //Logica para devolver todos los usuarios
-    public List<User> getAllUsers() {
-        List<User> users =  repo.findAll();
-        return users;
+    public List<User> getAllUsers(){
+        return repo.findAll();
     }
     //Logica para buscar un usuario por id
     public User getUserById(int id) {

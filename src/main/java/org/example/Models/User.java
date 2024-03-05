@@ -5,8 +5,9 @@ import jakarta.persistence.*;
 import jdk.jfr.DataAmount;
 import lombok.Data;
 
-@JsonIgnoreProperties({"hibernateLazyInitializer"})
-@Data
+import java.util.List;
+
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -34,6 +35,9 @@ public class User {
     @ManyToOne(optional = true,fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_apartment")
     private Apartment apartment;
+
+    @OneToMany(mappedBy = "user")
+    private List<Task> tasks;
 
     public User() {
     }

@@ -3,6 +3,8 @@ package org.example.Models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "apartment")
 public class Apartment {
@@ -29,6 +31,12 @@ public class Apartment {
 
     @Column(name ="img")
     private String img;
+
+    @OneToMany(mappedBy = "apartment", fetch = FetchType.LAZY)
+    private List<User> users;
+
+    @OneToMany(mappedBy = "apartment", fetch = FetchType.LAZY)
+    private List<Task> tasks;
 
     public Apartment() {
     }
