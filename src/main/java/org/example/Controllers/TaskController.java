@@ -42,14 +42,14 @@ public class TaskController {
         service.deleteTask(id);
     }
 
-    //Devuelve todas las tareas de un apartamento
+    //Devuelve todas las tareas de un apartamento por id
     @GetMapping("/apartment/{id}")
     public ResponseEntity<List<Task>> getTasksByApartmentId(@PathVariable("id") int id){
         List<Task> tasks = service.getTasksByApartmentId(id);
         return ResponseEntity.ok(tasks);
     }
 
-    //Devuelve todas las tareas de un usuario
+    //Devuelve todas las tareas de un usuario por id
     @GetMapping("/user/{id}")
     public ResponseEntity<List<Task>> getTasksByUserId(@PathVariable("id") int id){
         List<Task> tasks = service.getTasksByUserId(id);
@@ -63,4 +63,18 @@ public class TaskController {
         return ResponseEntity.ok(tasks);
     }
 
+
+    //Devuelve todas las tareas de un usuario por nombre de usuario
+    @GetMapping("/user/name/{name}")
+    public ResponseEntity<List<Task>> getTasksByUserName(@PathVariable("name") String name){
+        List<Task> tasks = service.getTasksByUserName(name);
+        return ResponseEntity.ok(tasks);
+    }
+
+    //Crea una tarea por apartamento id
+    @PostMapping("/apartment/{id}")
+    public ResponseEntity<Task> createTaskByApartmentId(@PathVariable("id") int id, @RequestBody Task task){
+        Task result = service.createTaskByApartmentId(id, task);
+        return ResponseEntity.ok(result);
+    }
 }

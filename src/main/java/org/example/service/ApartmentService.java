@@ -60,14 +60,11 @@ public class ApartmentService {
         }
     }
 
-    //Logica para devolver todos los apartamentos de un usuario
-    public List<Apartment> getApartmentsByUserId(int id){
-        return apartmentRepository.getApartmentsByUserId(id);
-    }
+
 
     //Devuelve todos los apartamentos por nombre
-    public List<Apartment> getApartmentsByName(String name){
-        return apartmentRepository.getApartmentsByName(name);
+    public List<Apartment> getApartmentByName(String name){
+        return apartmentRepository.getApartmentByName(name);
     }
 
 
