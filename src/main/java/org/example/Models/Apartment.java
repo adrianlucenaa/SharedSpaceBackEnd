@@ -12,22 +12,22 @@ public class Apartment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "address", length=256, nullable = false)
+    @Column(name = "address")
     private String address;
 
-    @Column(name = "numberowner", nullable = false)
+    @Column(name = "numberowner")
     private Integer numberowner;
 
-    @Column(name = "owneremail", length=256, nullable = false)
+    @Column(name = "owneremail")
     private String owneremail;
 
-    @Column(name = "nameowner", length=256, nullable = false)
+    @Column(name = "nameowner")
     private String nameowner;
 
-    @Column(name ="name", length=256,nullable = false )
+    @Column(name ="name")
     private String name;
 
-    @Column(name ="img", length=256,nullable = false)
+    @Column(name ="img")
     private String img;
 
     public Apartment() {

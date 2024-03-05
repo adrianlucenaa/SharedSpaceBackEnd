@@ -2,7 +2,11 @@ package org.example.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jdk.jfr.DataAmount;
+import lombok.Data;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
+@Data
 @Entity
 @Table(name = "users")
 public class User {
@@ -10,19 +14,19 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "name", length = 256, nullable = false)
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "surname", length = 256, nullable = false)
+    @Column(name = "surname")
     private String surname;
 
-    @Column(name = "email", length = 256, nullable = false)
+    @Column(name = "email")
     private String email;
 
-    @Column(name = "password", length = 256, nullable = false)
+    @Column(name = "password")
     private String password;
 
-    @Column(name = "dni", length = 256, nullable = false)
+    @Column(name = "dni")
     private String dni;
 
 

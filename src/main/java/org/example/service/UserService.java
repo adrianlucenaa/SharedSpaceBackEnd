@@ -77,7 +77,13 @@ public class UserService {
         return repo.getUsersByApartmentName(name);
     }
 
+    //Devuelve los usuarios que tengan asignadas tareas sin completar
     public List<User> getUsersTaskUncompleted() {
         return repo.getUsersTaskUncompleted();
+    }
+
+    //Devuelve los usuarios por id de tarea
+    public List<User> getUsersByTaskId(int id) {
+        return repo.getUsersByTaskId(id);
     }
 }

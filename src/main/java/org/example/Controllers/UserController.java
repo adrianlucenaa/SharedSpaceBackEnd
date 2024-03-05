@@ -69,4 +69,11 @@ public class UserController {
         return ResponseEntity.ok(users);
     }
 
+    //Metodo que devuelve todos los usuarios que tienen una tarea
+    @GetMapping("/task/{id}")
+    public ResponseEntity<List<User>> getUsersByTaskId(@PathVariable("id") int id){
+        List<User> users = service.getUsersByTaskId(id);
+        return ResponseEntity.ok(users);
+    }
+
 }
