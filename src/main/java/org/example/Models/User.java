@@ -33,7 +33,8 @@ public class User {
 
 
     @ManyToOne(optional = true,fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
-    @JoinColumn(name = " apartment")
+    @JoinColumn(name = "id_apartment")
+    @JsonIgnoreProperties("users")
     private Apartment apartment;
 
     @OneToMany(mappedBy = "user")

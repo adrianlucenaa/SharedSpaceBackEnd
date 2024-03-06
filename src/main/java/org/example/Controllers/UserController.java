@@ -62,10 +62,4 @@ public class UserController {
         return ResponseEntity.ok(users);
     }
 
-    //Devuelve los usuarios por nombre de apartamento
-    @GetMapping("/apartment/name/{name}")
-    public ResponseEntity<List<User>> getUsersByApartmentName(@PathVariable("name") String name){
-        List<User> users = service.getUsersByApartmentName(name);
-        return ResponseEntity.ok(users);
-    }
 }
