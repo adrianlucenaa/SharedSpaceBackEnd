@@ -24,7 +24,4 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
     @Query(value = "SELECT * FROM tasks t WHERE t.user_name = ?1", nativeQuery = true)
     List<Task> getTasksByUserName(String name);
 
-    //Crea una tarea por apartamento
-    @Query(value = "INSERT INTO tasks (name, description, completed, apartment_id, user_id, user_name) VALUES (?1, ?2, ?3, ?4, ?5, ?6)", nativeQuery = true)
-    void createTaskByApartmentId(int id, String name, String description, boolean completed, int apartment_id, int user_id, String user_name);
 }

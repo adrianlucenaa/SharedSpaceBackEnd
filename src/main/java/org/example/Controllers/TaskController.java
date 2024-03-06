@@ -1,6 +1,8 @@
 package org.example.Controllers;
 
+import org.example.Models.Apartment;
 import org.example.Models.Task;
+import org.example.Models.User;
 import org.example.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -69,12 +71,5 @@ public class TaskController {
     public ResponseEntity<List<Task>> getTasksByUserName(@PathVariable("name") String name){
         List<Task> tasks = service.getTasksByUserName(name);
         return ResponseEntity.ok(tasks);
-    }
-
-    //Crea una tarea por apartamento id
-    @PostMapping("/apartment/{id}")
-    public ResponseEntity<Task> createTaskByApartmentId(@PathVariable("id") int id, @RequestBody Task task){
-        Task result = service.createTaskByApartmentId(id, task);
-        return ResponseEntity.ok(result);
     }
 }

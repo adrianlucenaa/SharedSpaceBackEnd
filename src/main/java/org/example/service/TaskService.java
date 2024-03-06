@@ -39,8 +39,8 @@ public class TaskService {
                 fromDB.setName(task.getName());
                 fromDB.setDescription(task.getDescription());
                 fromDB.setCompleted(task.isCompleted());
-                fromDB.setApartment(task.getApartment());
-                fromDB.setUser(task.getUser());
+                fromDB.setApartmentId(task.getApartmentId());
+                fromDB.setUserId(task.getUserId());
                 result = taskRepository.save(fromDB);
             } else {
                 throw new RecordNotFoundException("No task found with id: " + task.getId());
@@ -50,27 +50,7 @@ public class TaskService {
         }
         return result;
     }
-    //Logica para crear una tarea por apartamento
-    public Task createTaskByApartmentId(int id, Task task) {
-        Task result;
-        if (task.getId() != 0) {
-            Optional<Task> resultOptional = taskRepository.findById(task.getId());
-            if (resultOptional.isPresent()) {
-                Task fromDB = resultOptional.get();
-                fromDB.setName(task.getName());
-                fromDB.setDescription(task.getDescription());
-                fromDB.setCompleted(task.isCompleted());
-                fromDB.setApartment(task.getApartment());
-                fromDB.setUser(task.getUser());
-                result = taskRepository.save(fromDB);
-            } else {
-                throw new RecordNotFoundException("No task found with id: " + task.getId());
-            }
-        } else {  //insert
-            result = taskRepository.save(task);
-        }
-        return result;
-    }
+
 
 
    //Logica para borrar una tarea

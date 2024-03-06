@@ -26,12 +26,14 @@ public class Task {
 
 
     @ManyToOne(optional = true,fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
-    @JoinColumn(name = "apartment_id")
+    @JoinColumn(name = "id_apartment")
+    @JsonIgnoreProperties("apartment")
     private Apartment apartment;
 
 
     @ManyToOne(optional = true,fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "id_user")
+    @JsonIgnoreProperties("user")
     private User user;
 
     public Task() {
@@ -40,14 +42,34 @@ public class Task {
 
 
 
-    public Task(int id, String name, String description, boolean completed, Apartment apartment, User user) {
-        this.id = id;
+    public Task(String name, String description, boolean completed, int apartmentId, int userId) {
         this.name = name;
         this.description = description;
         this.completed = completed;
-        this.apartment = apartment;
-        this.user = user;
+        this.apartment.setId(apartmentId);
+        this.user.setId(userId);
     }
+
+    public void setApartmentId(int apartmentId) {
+        this.apartment = new Apartment();
+        this.apartment.setId(apartmentId);
+    }
+
+    public void setUserId(int userId) {
+        this.user = new User();
+        this.user.setId(userId);
+    }
+
+    public int getApartmentId() {
+        this.apartment.getId();
+        return 0;
+    }
+
+    public int getUserId() {
+        this.user.getId();
+        return 0;
+    }
+
 
     public int getId() {
         return id;
@@ -81,21 +103,7 @@ public class Task {
         this.completed = completed;
     }
 
-    public Apartment getApartment() {
-        return apartment;
-    }
 
-    public void setApartment(Apartment apartment) {
-        this.apartment = apartment;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     @Override
     public String toString() {
@@ -104,7 +112,7 @@ public class Task {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", completed=" + completed +
-                ", apartment=" + apartment +
+                ", apartmentId=" + apartment +
                 ", user=" + user +
                 '}';
     }
@@ -116,9 +124,5 @@ public class Task {
         this.apartment = apartment;
         this.user = user;
     }
-
-
-
-
 
 }
