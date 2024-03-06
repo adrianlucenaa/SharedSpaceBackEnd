@@ -13,10 +13,9 @@ public interface ApartmentRepository extends JpaRepository<Apartment, Integer> {
     List<Apartment> getApartmentsUncompleted();
 
 
-
     //Devuelve los apartamentos por nombre de apartamento
     @Query(value = "SELECT * FROM apartments a WHERE a.name=?1", nativeQuery = true)
-    List<Apartment> getApartmentByName(String name);
+    List<Apartment> getApartmentsByName(String name);
 
     //Devuelve todos los apatmentos por tarea id
     @Query(value = "SELECT a.* FROM apartments a JOIN tasks t ON a.id = t.apartment_id WHERE t.id = ?1", nativeQuery = true)

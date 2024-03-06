@@ -63,8 +63,7 @@ public class UserService {
     public List<User> getUsersByApartmentId(int id){
         return repo.getUsersByApartmentId(id);
     }
-
-
+    
 
     //Devuelve todos los usuarios por nombre
     public List<User> getUsersByName(String name){
@@ -81,8 +80,4 @@ public class UserService {
         return repo.getUsersTaskUncompleted();
     }
 
-    //Devuelve los usuarios por id de tarea
-    public List<User> getUsersByTaskId(int id) {
-        return repo.getUsersByTaskId(id);
-    }
 }

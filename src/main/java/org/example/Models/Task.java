@@ -1,6 +1,7 @@
 package org.example.Models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import org.springframework.data.annotation.Id;
 
@@ -23,10 +24,14 @@ public class Task {
     @Column(name = "completed", nullable = false)
     private boolean completed;
 
-    @ManyToOne(optional = true,fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
-    private Apartment apartment;
 
     @ManyToOne(optional = true,fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+    @JoinColumn(name = "apartment_id")
+    private Apartment apartment;
+
+
+    @ManyToOne(optional = true,fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Task() {

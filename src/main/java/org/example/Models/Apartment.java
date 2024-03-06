@@ -1,6 +1,7 @@
 package org.example.Models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -32,10 +33,10 @@ public class Apartment {
     @Column(name ="img")
     private String img;
 
-    @OneToMany(mappedBy = "apartment", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "apartment", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private List<User> users;
 
-    @OneToMany(mappedBy = "apartment", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "apartment", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private List<Task> tasks;
 
     public Apartment() {

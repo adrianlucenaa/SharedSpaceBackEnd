@@ -32,8 +32,8 @@ public class User {
 
 
 
-    @ManyToOne(optional = true,fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
-    @JoinColumn(name = "id_apartment")
+    @ManyToOne(optional = true,fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
+    @JoinColumn(name = " apartment")
     private Apartment apartment;
 
     @OneToMany(mappedBy = "user")

@@ -46,9 +46,9 @@ public class ApartmentController {
 
 
     //Devuelve todos los apartamentos por nombre de apartamento
-    @GetMapping("/name")
-    public ResponseEntity<List<Apartment>> getApartmentByName(@PathVariable("name") String name){
-        List<Apartment> apartments = service.getApartmentByName(name);
+    @GetMapping("/name/{name}")
+    public ResponseEntity<List<Apartment>> getApartmentsByName(@PathVariable("name") String name){
+        List<Apartment> apartments = service.getApartmentsByName(name);
         return ResponseEntity.ok(apartments);
     }
 

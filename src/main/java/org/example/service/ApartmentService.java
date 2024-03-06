@@ -63,8 +63,8 @@ public class ApartmentService {
 
 
     //Devuelve todos los apartamentos por nombre
-    public List<Apartment> getApartmentByName(String name){
-        return apartmentRepository.getApartmentByName(name);
+    public List<Apartment> getApartmentsByName(String name){
+        return apartmentRepository.getApartmentsByName(name);
     }
 
 
