@@ -39,6 +39,7 @@ public class ApartmentController {
     @PutMapping("/{apartmentId}")
     public Apartment updateApartment(@PathVariable("apartmentId") Integer apartmentId, @RequestBody Apartment apartment) {
         return service.updateApartment(apartmentId, apartment);
+        
     }
 
 
