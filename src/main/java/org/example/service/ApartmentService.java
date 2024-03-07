@@ -29,6 +29,28 @@ public class ApartmentService {
             throw new RecordNotFoundException("No apartment found with id: " + id);
         }
     }
+
+
+    public Apartment updateApartment(Integer apartmentId, Apartment apartment) {
+        // Verificar si el apartamento existe en la base de datos
+        Apartment existingApartment = apartmentRepository.findById(apartmentId).orElse(null);
+        if (existingApartment != null) {
+            // Actualizar los campos del apartamento existente con los valores del apartamento recibido
+            existingApartment.setAddress(apartment.getAddress());
+            existingApartment.setNumberowner(apartment.getNumberowner());
+            existingApartment.setOwneremail(apartment.getOwneremail());
+            existingApartment.setNameowner(apartment.getNameowner());
+            existingApartment.setName(apartment.getName());
+            existingApartment.setImg(apartment.getImg());
+            // Guardar los cambios en la base de datos y devolver el apartamento actualizado
+            return apartmentRepository.save(existingApartment);
+        } else {
+            // El apartamento no existe en la base de datos
+            throw new IllegalArgumentException("Apartment not found");
+        }
+    }
+
+
     //Logica para crear o actualizar un apartamento
     public Apartment createOrUpdateApartment(Apartment apartment) {
         Apartment result;
@@ -49,6 +71,8 @@ public class ApartmentService {
         }
         return result;
     }
+
+
 
     //Logica para borrar un apartamento
     public void deleteApartment(int id) {
