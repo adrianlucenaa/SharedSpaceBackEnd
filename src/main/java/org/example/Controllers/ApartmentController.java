@@ -3,17 +3,22 @@ package org.example.Controllers;
 import java.util.List;
 
 import org.example.Models.Apartment;
+import org.example.Models.User;
 import org.example.service.ApartmentService;
+import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/apartments")
+@CrossOrigin(origins = "http://localhost:8100")
 public class ApartmentController {
 
     @Autowired
     ApartmentService service;
+    UserService userService;
 
     //Devuelve todos los apartamentos
     @GetMapping
@@ -29,6 +34,13 @@ public class ApartmentController {
         Apartment apartment = service.getApartmentById(id);
         return ResponseEntity.ok(apartment);
     }
+
+    // Método para asignar un apartamento a un usuario
+    @PutMapping("/{apartmentId}")
+    public Apartment updateApartment(@PathVariable("apartmentId") Integer apartmentId, @RequestBody Apartment apartment) {
+        return service.updateApartment(apartmentId, apartment);
+    }
+
 
     //Crea o actualiza un apartamento
     @PostMapping

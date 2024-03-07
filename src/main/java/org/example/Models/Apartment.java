@@ -42,7 +42,23 @@ public class Apartment {
     public Apartment() {
     }
 
-    public Apartment(int id, String address, int numberowner, String owneremail, String nameowner,String name,String img) {
+    public Apartment(String address, Integer numberowner, String owneremail, String nameowner, String name, String img) {
+        this.address = address;
+        this.numberowner = numberowner;
+        this.owneremail = owneremail;
+        this.nameowner = nameowner;
+        this.name = name;
+        this.img = img;
+    }
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public Apartment(int id, String address, int numberowner, String owneremail, String nameowner, String name, String img) {
         this.id = id;
         this.address = address;
         this.numberowner = numberowner;
@@ -50,6 +66,7 @@ public class Apartment {
         this.nameowner = nameowner;
         this.name = name;
         this.img = img;
+
     }
 
     public Integer getId() {
